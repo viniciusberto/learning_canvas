@@ -271,8 +271,9 @@ function aleatorizarTema() {
 
 function aplicarTema() {
     if (temasSalvos[atualTema]) {
+        let items = JSON.parse(JSON.stringify(drawing.items));
         drawing = JSON.parse(JSON.stringify(temasSalvos[atualTema]));
-        drawing.items = [];
+        drawing.items = items;
         draw('center', drawing);
     }
 }

@@ -127,7 +127,7 @@ body {
     color: white;
 }
 
-.group-header {
+#config .group-header {
     height: 38px;
     margin-bottom: 5px;
     padding-left: 5px;
@@ -136,7 +136,7 @@ body {
     border-top-right-radius: 17px;
 }
 
-.no-btn {
+#config .no-btn {
     border-radius: 0;
 }
 
@@ -197,23 +197,23 @@ body {
     width: 100%;
 }
 
-ul#lista {
+#config ul#lista {
     height: 320px;
     overflow-y: scroll;
 }
 
-ul#lista li:hover {
+#config ul#lista li:hover {
     background: #DDD;
     animation: lista-hover;
     animation-duration: 500ms;
     padding: 10px 5px 10px 10px;
 }
 
-.botao-lateral-redondo:hover::after {
+#config .botao-lateral-redondo:hover::after {
     visibility: visible;
 }
 
-.botao-lateral-redondo {
+#config .botao-lateral-redondo {
     float: right;
     background: #FFF;
     color: #000;
@@ -230,7 +230,7 @@ ul#lista li:hover {
     /* display: block; */
 }
 
-a.botao-lateral-redondo::after {
+#config a.botao-lateral-redondo::after {
     background: black;
     font-size: 15px;
     color: #FFFFFF;
@@ -248,7 +248,7 @@ a.botao-lateral-redondo::after {
     visibility: hidden;
 }
 
-.mostrar-botoes {
+#config .mostrar-botoes {
     display: block;
     animation: mostrar-botoes;
     animation-duration: 1s;
@@ -263,7 +263,7 @@ a.botao-lateral-redondo::after {
     }
 }
 
-.ocultar-botoes {
+#config .ocultar-botoes {
     display: none;
     animation: ocultar-botoes;
     animation-duration: 1s;
@@ -278,7 +278,7 @@ a.botao-lateral-redondo::after {
     }
 }
 
-.mostrar-admin {
+#config.mostrar-admin {
     animation: mostrarAdmin;
     animation-duration: 1s;
 }
@@ -292,7 +292,7 @@ a.botao-lateral-redondo::after {
     }
 }
 
-.notificacao::after {
+#config .notificacao::after {
     position: absolute;
     content: attr(updates);
     border-radius: 50%;
@@ -306,19 +306,19 @@ a.botao-lateral-redondo::after {
     margin-top: -5px;
 }
 
-.ocultar-esquerda {
+#config.ocultar-esquerda {
     margin-left: -280px;
     animation: ocultarParaEsquerda;
     animation-duration: 1s;
 }
 
-.deslizar-esquerda {
+canvas.deslizar-esquerda {
     margin-left: calc((100vw - 940px) / 2);
     animation: deslizarParaEequerda;
     animation-duration: 1s;
 }
 
-.deslizar-direita {
+canvas.deslizar-direita {
     margin-left: calc(((100vw + 280px) - 940px) / 2);
     animation: deslizarParaDireita;
     animation-duration: 1s;
@@ -364,31 +364,31 @@ a.botao-lateral-redondo::after {
     }
 }
 
-ul#lista li {
+#config ul#lista li {
     border-bottom: 2px solid;
     padding: 10px 5px 10px 5px
 }
 
-ul#lista {
+#config ul#lista {
     margin: 0;
     padding: 0;
     list-style: none;
     background: #FFF;
 }
 
-ul#lista li .editar-lista:hover,
-ul#lista li .lixeira-lista:hover {
+#config ul#lista li .editar-lista:hover,
+#config ul#lista li .lixeira-lista:hover {
     cursor: pointer;
     color: red;
 }
 
-ul#lista li .editar-lista,
-ul#lista li .lixeira-lista {
+#config ul#lista li .editar-lista,
+#config ul#lista li .lixeira-lista {
     float: right;
     margin-right: 5px;
 }
 
-ul#lista li .editar-lista:hover {
+#config ul#lista li .editar-lista:hover {
     color: dodgerblue;
 }
 
@@ -403,28 +403,29 @@ ul#lista li .editar-lista:hover {
     width: 10px;
 }
 
-ul#lista::-webkit-scrollbar-thumb {
+#config ul#lista::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.47);
     border-radius: 10px;
 }
 
-ul#lista::-webkit-scrollbar {
+#config ul#lista::-webkit-scrollbar {
     background: rgba(0, 0, 0, 0.33);
     border-radius: 10px;
     width: 10px;
 }
 
-.group .color-group {
+#config .group .color-group {
+    margin-bottom: 0px !important;
     margin-bottom: 0px !important;
 }
 
-.slider {
+#config .slider {
     height: 200px;
     background: rgba(14, 14, 14, 0.37);
     box-shadow: 0px 0px 5px black inset;
 }
 
-.seta {
+#config .seta {
     margin-top: calc(50% - 43px);
     font-size: 24px;
     background: #3a3a3a;
@@ -435,12 +436,12 @@ ul#lista::-webkit-scrollbar {
     cursor: pointer;
 }
 
-.seta.seta-esquerda {
+#config .seta.seta-esquerda {
     float: left;
     margin-left: -10px;
 }
 
-.seta.seta-direita {
+#config .seta.seta-direita {
     float: right;
     margin-right: -10px;
 }
