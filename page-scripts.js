@@ -1,43 +1,7 @@
 let drawing = {
     "day": "SEXTA",
     "items": [
-        "DESOÇADOR",
-        "ENCANADOR",
-        "PEDREIRO",
-        "PEÃO DO SITIO",
-        "PROGRAMADOR",
-        "PROSTITUTA",
-        "GAROTA DE PROGRAMA",
-        "MATADOR DE ALUGUEL",
-        "SEGURÂNÇA",
-        "GUARDA FLORESTAL",
-        "PREFEITO",
-        "TÉCNICO EM INFORMÁTICA",
-    ],
-    "colors": {
-        "header": "#E6050C",
-        "headertext1": "#70CB01",
-        "headertext2": "#FFF",
-        "body": "#FFF200",
-        "daybody": "#E7E7E7",
-        "dayheader": "#99FF1C",
-        "daytext": "#000",
-        "address": "#000",
-        "social": "#FFF",
-    },
-    "fonts": {
-        "title": "Montserrat Black",
-        "week": "Liebe Doris",
-        "list": "Montserrat Bold",
-        "address": "Montserrat",
-        "social": "Lucida Grande",
-    }
-};
-
-const resetOBJ = {
-    "day": "SEGUNDA",
-    "items": [
-        "EXEMPLO DE VAGA DE EMPREGO",
+        "EXEMPLO DE VAGA DE EMPREGO 1",
         "EXEMPLO DE VAGA DE EMPREGO 2",
         "EXEMPLO DE VAGA DE EMPREGO 3",
         "EXEMPLO DE VAGA DE EMPREGO 4",
@@ -60,6 +24,8 @@ const resetOBJ = {
         "daytext": "#000",
         "address": "#000",
         "social": "#FFF",
+        "listtext": "#000",
+        "socialfill": "#E6050C",
     },
     "fonts": {
         "title": "Montserrat Black",
@@ -69,6 +35,45 @@ const resetOBJ = {
         "social": "Lucida Grande",
     }
 };
+const resetOBJ = {
+    "day": "SEGUNDA",
+    "items": [
+        "EXEMPLO DE VAGA DE EMPREGO 1",
+        "EXEMPLO DE VAGA DE EMPREGO 2",
+        "EXEMPLO DE VAGA DE EMPREGO 3",
+        "EXEMPLO DE VAGA DE EMPREGO 4",
+        "EXEMPLO DE VAGA DE EMPREGO 5",
+        "EXEMPLO DE VAGA DE EMPREGO 6",
+        "EXEMPLO DE VAGA DE EMPREGO 7",
+        "EXEMPLO DE VAGA DE EMPREGO 8",
+        "EXEMPLO DE VAGA DE EMPREGO 9",
+        "EXEMPLO DE VAGA DE EMPREGO 10",
+        "EXEMPLO DE VAGA DE EMPREGO 11",
+        "EXEMPLO DE VAGA DE EMPREGO 12",
+    ],
+    "colors": {
+        "header": "#E6050C",
+        "headertext1": "#70CB01",
+        "headertext2": "#FFF",
+        "body": "#FFF200",
+        "daybody": "#E7E7E7",
+        "dayheader": "#99FF1C",
+        "daytext": "#000",
+        "address": "#000",
+        "social": "#FFF",
+        "listtext": "#000",
+        "socialfill": "#E6050C",
+    },
+    "fonts": {
+        "title": "Montserrat Black",
+        "week": "Liebe Doris",
+        "list": "Montserrat Bold",
+        "address": "Montserrat",
+        "social": "Lucida Grande",
+    }
+};
+
+let temasSalvos = [];
 
 const selectDia = new Select('select');
 const editVaga = document.getElementById('vaga');
@@ -86,14 +91,14 @@ function configuracao() {
     var lista = document.getElementById('lista');
     var vagas_lista = document.querySelectorAll('.vagas');
 
-    vaga.onkeyup = function (key) {
+    editVaga.onkeyup = function (key) {
         if (key.code === "Enter") {
-            adicionarVaga(vaga.value);
+            adicionarVaga(editVaga.value);
         }
     };
 
     btn_add.onclick = function () {
-        adicionarVaga(vaga.value);
+        adicionarVaga(editVaga.value);
     };
 
     function adicionarVaga(text, update = true) {
@@ -101,6 +106,7 @@ function configuracao() {
             let vaga = '<li class="vagas"><i class="lixeira-lista far fa-trash-alt"></i>' + text + '</li>';
             listboxVagas.addItem(vaga, removerVagaBotao, 'lixeira-lista');
             vagas_lista = document.querySelectorAll('.vagas');
+            editVaga.value = "";
             if (update)
                 return updateCanvas();
         }
@@ -189,6 +195,8 @@ var topo_dia = document.getElementById('dayheader');
 var texto_dia = document.getElementById('daytext');
 var endereco = document.getElementById('address');
 var cor_social = document.getElementById('social');
+var texto_lista = document.getElementById('listtext');
+var fundo_social = document.getElementById('socialfill');
 
 var btns_cores = document.querySelectorAll('.cores');
 
@@ -227,6 +235,12 @@ function mudarCor(param) {
             break;
         case "social":
             drawing.colors.social = param.target.value;
+            break;
+        case "listtext":
+            drawing.colors.listtext = param.target.value;
+            break;
+        case "socialfill":
+            drawing.colors.socialfill = param.target.value;
             break;
     }
 }
@@ -297,13 +311,19 @@ function updateCanvas() {
     }
     drawing.items = vagas_array;
 
+    document.getElementById('center').remove();
+
     var aux = document.createElement('canvas');
     aux.classList.add('deslizar-direita');
     aux.setAttribute("width", "940");
     aux.setAttribute("height", "788");
     aux.setAttribute("id", "center");
-    aux.style.width = '788px';
+    aux.style.width = '940px';
     document.getElementsByTagName("body")[0].appendChild(aux);
     updateNotification();
     return draw('center', drawing);
+}
+
+function salvarTema() {
+    temasSalvos.push(JSON.parse(JSON.stringify(drawing)));
 }

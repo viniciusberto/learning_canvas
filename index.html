@@ -8,8 +8,18 @@
       integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 <link rel="stylesheet" href="./style.css">
 <body>
+<style>
+    canvas {
+        margin-top: 10px;
+    }
 
-<canvas class="deslizar-direita" id="center" style="width: 788px;" width="940" height="980"></canvas>
+    @media (min-height: 800px) {
+        canvas {
+            margin-top: calc((100vh / 2) - (788px / 2));
+        }
+    }
+</style>
+<canvas class="deslizar-direita" id="center" style="width: 940px;" width="940" height="980"></canvas>
 <img style="display: none;" src="./logo.png" id="logo-emprego" alt="logo">
 <img style="display: none; filter: grayscale(100%);" src="./pontinho.png" id="pontinho" alt="logo">
 
@@ -24,9 +34,10 @@
             <hr>
         </div>
 
-
         <div class="group">
-            <label for="dia-semana">Dia da Semana</label>
+            <div class="group-header no-btn">
+                <label for="lista">Dia da Semana</label>
+            </div>
             <select name="dia-semana" id="dia-semana">
                 <option value="">Dia da Semana</option>
                 <option value="SEGUNDA">Segunda</option>
@@ -56,43 +67,49 @@
                 //
                 //
                 //
-                //
-
+                /**/
 
             };
         </script>
 
 
-        <div class="titulo">
-            <h2>
-                Vagas
-            </h2>
-            <hr>
-        </div>
-
-        <div class="vagas-group">
-            <label for="vaga">Vaga de emprego</label>
-            <input id="vaga" type="text">
-            <button id="add-vaga">Adicionar</button>
-        </div>
         <div class="vagas-group">
             <div class="group-header">
                 <label for="lista">Lista de Vagas</label>
                 <a id="removerVagas" style="cursor: pointer;" class="botao-lateral-redondo"
                    tooltip="Remover todas as Vagas"><i class="fa fa-trash"></i></a>
             </div>
+            <input id="vaga" type="text">
+            <button class="but but-lg" id="add-vaga">Adicionar</button>
             <ul id="lista">
             </ul>
-        </div>
+        </div><!-- Lista de vagas -->
 
-        <div class="titulo">
-            <h2>
-                Cores
-                <a onclick="coresAleatorias()" href="#"
-                   style="float: right; background: #FFF; color: #000; border-radius: 50%; padding: 3px 6px; font-size: 20px;"><i
-                        class="fas fa-random"></i></a>
-            </h2>
-            <hr>
+        <div class="group-header">
+            <label for="lista">Cores</label>
+            <style>
+                #aleatorizar::after {
+                    right: 62px;
+                }
+
+                #aleatorizar {
+                    cursor: pointer;
+                }
+
+                #salvarTema::after {
+                    right: 72px;
+                }
+
+                #salvarTema {
+                    cursor: pointer;
+                }
+            </style>
+            <a tooltip="Aleatorizar" class="botao-lateral-redondo" onclick="coresAleatorias()" id="aleatorizar"
+               style="/*float: right; background: #FFF; color: #000; border-radius: 50%; padding: 3px 6px; font-size: 20px;*/"><i
+                    class="fas fa-random"></i></a>
+            <a tooltip="Salvar Tema" class="botao-lateral-redondo" onclick="salvarTema()" id="salvarTema"
+               style="/*float: right; background: #FFF; color: #000; border-radius: 50%; padding: 3px 6px; font-size: 20px;*/"><i
+                    class="fas fa-save"></i></a>
         </div>
 
         <div class="color-group">
@@ -131,17 +148,38 @@
             <label for="social">Texto do Icone Social</label>
             <input type="color" class="cores" value="#FFFFFF" id="social">
         </div>
+        <div class="color-group">
+            <label for="listtext">Texto da Lista</label>
+            <input type="color" class="cores" value="#000000" id="listtext">
+        </div>
+        <div class="color-group">
+            <label for="socialfill">Fundo Icone Social</label>
+            <input type="color" class="cores" value="#E6050C" id="socialfill">
+        </div>
+
+        <div class="vagas-group">
+            <div class="group-header">
+                <label for="lista">Lista de Vagas</label>
+                <a id="" style="cursor: pointer;" class="botao-lateral-redondo"
+                   tooltip="Remover todas as Vagas"><i class="fa fa-trash"></i></a>
+            </div>
+
+
+
+
+
+        </div>
 
 
     </div>
-    <a href="#" id="btn-config"><i class="fa fa-cog fa-spin"></i></a>
-    <a href="#" id="btn-save"><i class="fas fa-save"></i></a>
-    <a style="cursor:pointer;" id="btn-sync"><i class="fas fa-sync-alt"></i></a>
+    <a id="btn-config"><i class="fa fa-cog fa-spin"></i></a>
+    <a id="btn-save"><i class="fas fa-save"></i></a>
+    <a id="btn-sync"><i class="fas fa-sync-alt"></i></a>
 </div>
+
 
 <script type="application/javascript" src="./elements.js"></script>
 <script type="application/javascript" src="./script.js"></script>
 <script type="application/javascript" src="./page-scripts.js"></script>
-
 </body>
 </html>

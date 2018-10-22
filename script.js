@@ -37,6 +37,8 @@ function draw(component, drawing) {
                 "daytext": "#000",
                 "address": "#000",
                 "social": "#FFF",
+                "listtext": "#000",
+                "socialfill": "#E6050C",
             },
             "fonts": {
                 "title": "Montserrat Black",
@@ -75,6 +77,8 @@ function draw(component, drawing) {
         let DAY_TEXT = drawing.colors.daytext;
         let ADDRESS = drawing.colors.address;
         let SOCIAL = drawing.colors.social;
+        let LIST_TEXT_COLOR = drawing.colors.listtext;
+        let SOCIAL_FILL = drawing.colors.socialfill;
         let LIST = drawing.items;
 
         if (!HEADER)
@@ -109,6 +113,10 @@ function draw(component, drawing) {
             SOCIAL = "#FFF";
         if (!LIST)
             LIST = [];
+        if (!LIST_TEXT_COLOR)
+            LIST_TEXT_COLOR = '#000';
+        if (!SOCIAL_FILL)
+            SOCIAL_FILL = '#E6050C';
 
         ctx.fillStyle = HEADER;
         ctx.fillRect(0, 0, 940, 282);
@@ -230,17 +238,16 @@ function draw(component, drawing) {
                 for (let i = 0; i < LIST.length; i++) {
                     if (LIST.length === 1) {
                         ctx.fillStyle = HEADER;
-                        ctx.fillRect(110, LIST_TOP, 720, 3);
-                        ctx.fillRect(110, LIST_TOP - lineHeight, 720, 3);
+                        ctx.fillRect(110, LIST_TOP, 720, 1);
+                        ctx.fillRect(110, LIST_TOP - lineHeight, 720, 1);
                     }
 
-                    ctx.fillStyle = '#000000';
-                    ctx.fillText(LIST[i], textCenter, LIST_TOP - textMarginLine);
-
+                    ctx.fillStyle = LIST_TEXT_COLOR;
+                    ctx.fillText(LIST[i], textCenter, LIST_TOP - textMarginLine, 720);
 
                     if (i < LIST.length - 1) {
                         ctx.fillStyle = HEADER;
-                        ctx.fillRect(110, LIST_TOP, 720, 3);
+                        ctx.fillRect(110, LIST_TOP, 720, 1);
                         LIST_TOP = LIST_TOP + lineHeight;
                     }
                 }
@@ -267,7 +274,7 @@ function draw(component, drawing) {
 
                 document.fonts.load('10pt "' + FONT_SOCIAL + '"').then(function () {
                     ctx.beginPath();
-                    ctx.fillStyle = HEADER;
+                    ctx.fillStyle = SOCIAL_FILL;
                     ctx.arc(92, LIST_TOP + 130, 9, 0, 2 * Math.PI, false);
                     ctx.fill();
 
@@ -276,7 +283,7 @@ function draw(component, drawing) {
                     ctx.fillText("f", 91, LIST_TOP + 135);
 
                     ctx.beginPath();
-                    ctx.fillStyle = HEADER;
+                    ctx.fillStyle = SOCIAL_FILL;
                     ctx.arc(280, LIST_TOP + 130, 9, 0, 2 * Math.PI, false);
                     ctx.fill();
 
