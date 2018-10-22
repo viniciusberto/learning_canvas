@@ -1,0 +1,382 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: #0E0E0E;
+}
+
+@font-face {
+    font-family: 'Lucida Grande';
+    font-style: normal;
+    font-weight: normal;
+    font-display: fallback;
+    src: local('Lucida Grande Bold'), local('Lucida-Grande-Bold'), url(./lucidagrandebold.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-display: fallback;
+    src: local('Montserrat Regular'), local('Montserrat-Regular'), url(./Montserrat-Regular.woff) format('woff');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Montserrat Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: fallback;
+    src: local('Montserrat Bold'), local('Montserrat-Bold'), url(./Montserrat-Bold.woff) format('woff');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Montserrat Black';
+    font-style: normal;
+    font-weight: 900;
+    font-display: fallback;
+    src: local('Montserrat Black'), local('Montserrat-Blackd'), url(./Montserrat-Black.woff) format('woff');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Liebe Doris';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: local('LiebeDoris'), url('LiebeDoris.woff') format('woff');
+}
+
+body {
+    overflow-x: hidden;
+}
+
+#config * {
+    box-sizing: border-box;
+}
+
+#config {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: gray;
+}
+
+#config .config-content {
+    float: left;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+#config #btn-config,
+#config #btn-sync,
+#config #btn-save {
+    background: gray;
+    position: absolute;
+    /*width: 50px;*/
+    /*height: 50px;*/
+    right: -48px;
+    padding: 5px 10px;
+    width: 50px;
+    font-size: 30px;
+    text-align: center;
+    color: #FFF;
+}
+
+#config #btn-save {
+    top: 52px;
+}
+
+#config #btn-sync {
+    top: 104px;
+}
+
+#config .titulo h1,
+#config .titulo h2 {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 22px;
+    color: #FFF;
+}
+
+#config .titulo h2 {
+    font-size: 18px;
+    color: #ffd300;
+}
+
+#config hr {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+#config .config-content {
+    padding: 0 15px;
+    text-align: left;
+}
+
+#config label {
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 34px;
+    color: white;
+}
+
+.group-header {
+    height: 37px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    background: #E6050C;
+    border-bottom-right-radius: 17px;
+    border-top-right-radius: 17px;
+}
+
+#config .group {
+    margin-bottom: 20px;
+}
+
+#config .group input,
+#config .group select {
+    margin-top: 2px;
+}
+
+#config input,
+#config select {
+    width: 100%;
+    height: 38px;
+    display: block;
+    background: #FFF;
+    font-size: 18px;
+}
+
+#config .color-group input[type="color"] {
+    width: 50px;
+    display: inline-block;
+    float: left;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+#config .color-group label {
+    line-height: 40px;
+    color: #F9F9F9;
+    font-size: 16px;
+}
+
+#config .color-group {
+    display: block;
+    width: 100%;
+    clear: both;
+}
+
+#config button {
+    background: #fdd102;
+    font-size: 15px;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+ul#lista {
+    height: 320px;
+    overflow-y: scroll;
+}
+
+ul#lista li:hover {
+    background: #DDD;
+    animation: lista-hover;
+    animation-duration: 500ms;
+    padding: 10px 5px 10px 10px;
+}
+
+.botao-lateral-redondo:hover::after {
+    visibility: visible;
+}
+
+.botao-lateral-redondo {
+    float: right;
+    background: #FFF;
+    color: #000;
+    border-radius: 50%;
+    padding: 3px 8px;
+    font-size: 20px;
+    /* top: 18px; */
+    margin-top: 2px;
+    margin-right: 3px;
+    box-shadow: 0px 0px 3px inset;
+    height: 34px;
+    width: 34px;
+    text-decoration: none;
+    /* display: block; */
+}
+
+a.botao-lateral-redondo::after {
+    background: black;
+    font-size: 15px;
+    color: #FFFFFF;
+    padding: 1px 5px;
+    position: relative;
+    content: attr(tooltip);
+    top: -59px;
+    border-radius: 5px;
+    padding-right: 5px;
+    white-space: nowrap;
+    text-align: right;
+    right: 153px;
+    text-decoration: none !important;
+    text-transform: inherit;
+    visibility: hidden;
+}
+
+.mostrar-botoes {
+    display: block;
+    animation: mostrar-botoes;
+    animation-duration: 1s;
+}
+
+@keyframes mostrar-botoes {
+    from {
+        display: none;
+    }
+    to {
+        display: block;
+    }
+}
+
+.ocultar-botoes {
+    display: none;
+    animation: ocultar-botoes;
+    animation-duration: 1s;
+}
+
+@keyframes ocultar-botoes {
+    from {
+        display: block;
+    }
+    to {
+        display: none;
+    }
+}
+
+.mostrar-admin {
+    animation: mostrarAdmin;
+    animation-duration: 1s;
+}
+
+@keyframes mostrarAdmin {
+    from {
+        margin-left: -280px;
+    }
+    to {
+        margin-left: 0px;
+    }
+}
+
+.notificacao::after {
+    position: absolute;
+    content: attr(updates);
+    border-radius: 50%;
+    width: 25px;
+    text-align: center;
+    line-height: 25px;
+    font-size: 14px;
+    background: #E6050C;
+    margin-left: 2px;
+    font-weight: bold;
+    margin-top: -5px;
+}
+
+.ocultar-esquerda {
+    margin-left: -280px;
+    animation: ocultarParaEsquerda;
+    animation-duration: 1s;
+}
+
+.deslizar-esquerda {
+    margin-left: calc((100vw - 788px) / 2);
+    animation: deslizarParaEequerda;
+    animation-duration: 1s;
+}
+
+.deslizar-direita {
+    margin-left: calc(((100vw + 280px) - 788px) / 2);
+    animation: deslizarParaDireita;
+    animation-duration: 1s;
+}
+
+@keyframes deslizarParaEequerda {
+    from {
+        margin-left: calc(((100vw + 280px) - 788px) / 2);
+    }
+    to {
+        margin-left: calc((100vw - 788px) / 2);
+    }
+}
+
+@keyframes deslizarParaDireita {
+    from {
+        margin-left: calc((100vw - 788px) / 2);
+    }
+    to {
+        margin-left: calc(((100vw + 280px) - 788px) / 2);
+    }
+}
+
+@keyframes ocultarParaEsquerda {
+    from {
+        margin-left: 0;
+    }
+    to {
+        margin-left: -280px;
+    }
+}
+
+#config .vagas-group {
+    padding-bottom: 20px;
+}
+
+@keyframes lista-hover {
+    from {
+        padding: 10px 5px 10px 5px
+    }
+    to {
+        padding: 10px 5px 10px 10px
+    }
+}
+
+ul#lista li {
+    border-bottom: 2px solid;
+    padding: 10px 5px 10px 5px
+}
+
+ul#lista {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: #FFF;
+}
+
+ul#lista li .editar-lista:hover,
+ul#lista li .lixeira-lista:hover {
+    cursor: pointer;
+    color: red;
+}
+
+ul#lista li .editar-lista,
+ul#lista li .lixeira-lista {
+    float: right;
+    margin-right: 5px;
+}
+
+ul#lista li .editar-lista:hover {
+    color: dodgerblue;
+}

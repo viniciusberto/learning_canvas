@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<link rel="stylesheet" href="./style.css">
+<body>
+
+<canvas class="deslizar-direita" id="center" style="width: 788px;" width="940" height="980"></canvas>
+<img style="display: none;" src="./logo.png" id="logo-emprego" alt="logo">
+<img style="display: none; filter: grayscale(100%);" src="./pontinho.png" id="pontinho" alt="logo">
+
+
+<div id="config" class="config">
+    <div class="config-content">
+
+        <div class="header titulo">
+            <h1>
+                Configurar vagas de emprego
+            </h1>
+            <hr>
+        </div>
+
+
+        <div class="group">
+            <label for="dia-semana">Dia da Semana</label>
+            <select name="dia-semana" id="dia-semana">
+                <option value="">Dia da Semana</option>
+                <option value="SEGUNDA">Segunda</option>
+                <option value="TERCA">Terça</option>
+                <option value="QUARTA">Quarta</option>
+                <option value="QUINTA">Quinta</option>
+                <option value="SEXTA">Sexta</option>
+            </select>
+        </div><!-- /.dia-semana -->
+
+        <script>
+            window.onload = function () {
+
+                configuracao();
+                // let listboxVagas = new Listbox("lista");
+                //
+                // let cor_cabecalho = document.getElementById("");
+                // let cor_cabecalho1 = document.getElementById("");
+                // let cor_cabecalho2 = document.getElementById("");
+                // let corpo = document.getElementById("");
+                // let cor_cabecalho_dia = document.getElementById("");
+                // let corpo_dia = document.getElementById("");
+                // let texto_dia = document.getElementById("");
+                // let endereco = document.getElementById("");
+                // let cor_social = document.getElementById("");
+                //
+                //
+                //
+                //
+                //
+
+
+            };
+        </script>
+
+
+        <div class="titulo">
+            <h2>
+                Vagas
+            </h2>
+            <hr>
+        </div>
+
+        <div class="vagas-group">
+            <label for="vaga">Vaga de emprego</label>
+            <input id="vaga" type="text">
+            <button id="add-vaga">Adicionar</button>
+        </div>
+        <div class="vagas-group">
+            <div class="group-header">
+                <label for="lista">Lista de Vagas</label>
+                <a id="removerVagas" style="cursor: pointer;" class="botao-lateral-redondo"
+                   tooltip="Remover todas as Vagas"><i class="fa fa-trash"></i></a>
+            </div>
+            <ul id="lista">
+            </ul>
+        </div>
+
+        <div class="titulo">
+            <h2>
+                Cores
+                <a onclick="coresAleatorias()" href="#"
+                   style="float: right; background: #FFF; color: #000; border-radius: 50%; padding: 3px 6px; font-size: 20px;"><i
+                        class="fas fa-random"></i></a>
+            </h2>
+            <hr>
+        </div>
+
+        <div class="color-group">
+            <label for="header">Cabeçalho</label>
+            <input class="cores" type="color" value="#E6050C" id="header">
+        </div>
+        <div class="color-group">
+            <label for="headertext1">Texto 1 do Cabeçalho</label>
+            <input class="cores" type="color" value="#70CB01" id="headertext1">
+        </div>
+        <div class="color-group">
+            <label for="headertext2">Texto 2 do Cabeçalho</label>
+            <input type="color" class="cores" value="#FFFFFF" id="headertext2">
+        </div>
+        <div class="color-group">
+            <label for="body">Corpo</label>
+            <input type="color" class="cores" value="#FFF200" id="body">
+        </div>
+        <div class="color-group">
+            <label for="dayheader">Cabeçalho do Dia</label>
+            <input type="color" class="cores" value="#99FF1C" id="dayheader">
+        </div>
+        <div class="color-group">
+            <label for="daybody">Corpo do Dia</label>
+            <input type="color" class="cores" value="#E7E7E7" id="daybody">
+        </div>
+        <div class="color-group">
+            <label for="daytext">Texto do Dia</label>
+            <input type="color" class="cores" value="#000000" id="daytext">
+        </div>
+        <div class="color-group">
+            <label for="address">Endereço</label>
+            <input type="color" class="cores" value="#000000" id="address">
+        </div>
+        <div class="color-group">
+            <label for="social">Texto do Icone Social</label>
+            <input type="color" class="cores" value="#FFFFFF" id="social">
+        </div>
+
+
+    </div>
+    <a href="#" id="btn-config"><i class="fa fa-cog fa-spin"></i></a>
+    <a href="#" id="btn-save"><i class="fas fa-save"></i></a>
+    <a style="cursor:pointer;" id="btn-sync"><i class="fas fa-sync-alt"></i></a>
+</div>
+
+<script type="application/javascript" src="./elements.js"></script>
+<script type="application/javascript" src="./script.js"></script>
+<script type="application/javascript" src="./page-scripts.js"></script>
+
+</body>
+</html>
