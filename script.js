@@ -10,6 +10,7 @@ function draw(component, drawing) {
         canvas = document.getElementsByTagName(component)[0];
     if (!canvas)
         canvas = document.querySelector(component);
+
     if (!drawing)
         drawing = {
             "day": "QUINTA",

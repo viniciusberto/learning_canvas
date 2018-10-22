@@ -52,9 +52,6 @@ function Listbox(name) {
 
     this.addEspecific = function (array) {
         for (let i = 0; i < array.length; i++) {
-
-
-
             this.element.addItem(array[i].item, array[i].callback, array[i].selCalback);
         }
     };

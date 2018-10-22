@@ -35,6 +35,7 @@ let drawing = {
         "social": "Lucida Grande",
     }
 };
+
 const resetOBJ = {
     "day": "SEGUNDA",
     "items": [
@@ -74,6 +75,8 @@ const resetOBJ = {
 };
 
 let temasSalvos = [];
+
+let atualTema = 0;
 
 const selectDia = new Select('select');
 const editVaga = document.getElementById('vaga');
@@ -177,6 +180,7 @@ function configuracao() {
         }
     };
     draw('canvas', drawing);
+    draw('tema', drawing);
 }
 
 let dia_semana = document.getElementById('dia-semana');
@@ -249,6 +253,53 @@ let btnsave = document.getElementById("btn-save");
 btnsave.onclick = function () {
     resetNotification();
 };
+
+function aleatorizarTema() {
+    // let rand = null;
+    //
+    // while (rand > temasSalvos.length - 1 || rand < 0) {
+    //     rand = Math.floor(Math.random() * 101);
+    //     console.log(rand);
+    // }
+    //
+    // console.log(rand);
+    //
+    // if (temasSalvos.length > 0) {
+    //
+    // }
+}
+
+function aplicarTema() {
+    if (temasSalvos[atualTema]) {
+        drawing = JSON.parse(JSON.stringify(temasSalvos[atualTema]));
+        drawing.items = [];
+        draw('center', drawing);
+    }
+}
+
+function anteriorTema() {
+
+
+    if (temasSalvos.length - 1 > 0 && atualTema > 0) {
+        atualTema--;
+    } else if (temasSalvos.length !== 0) {
+        atualTema = temasSalvos.length - 1;
+    }
+    if (temasSalvos[atualTema]) {
+        draw('tema', temasSalvos[atualTema]);
+    }
+}
+
+function proximoTema() {
+    if (temasSalvos.length > atualTema) {
+        atualTema++;
+    } else {
+        atualTema = 0;
+    }
+    if (temasSalvos[atualTema]) {
+        draw('tema', temasSalvos[atualTema]);
+    }
+}
 
 function updateNotification() {
     let btnsv = document.getElementById("btn-save");
@@ -325,5 +376,22 @@ function updateCanvas() {
 }
 
 function salvarTema() {
-    temasSalvos.push(JSON.parse(JSON.stringify(drawing)));
+    var temp = JSON.parse(JSON.stringify(drawing));
+    temp.items = [
+        "EXEMPLO DE VAGA DE EMPREGO 1",
+        "EXEMPLO DE VAGA DE EMPREGO 2",
+        "EXEMPLO DE VAGA DE EMPREGO 3",
+        "EXEMPLO DE VAGA DE EMPREGO 4",
+        "EXEMPLO DE VAGA DE EMPREGO 5",
+        "EXEMPLO DE VAGA DE EMPREGO 6",
+        "EXEMPLO DE VAGA DE EMPREGO 7",
+        "EXEMPLO DE VAGA DE EMPREGO 8",
+        "EXEMPLO DE VAGA DE EMPREGO 9",
+        "EXEMPLO DE VAGA DE EMPREGO 10",
+        "EXEMPLO DE VAGA DE EMPREGO 11",
+        "EXEMPLO DE VAGA DE EMPREGO 12",
+    ];
+    temasSalvos.push(temp);
+
+
 }
