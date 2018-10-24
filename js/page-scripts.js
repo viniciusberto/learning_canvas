@@ -33,6 +33,9 @@ let drawing = {
         "list": "Montserrat Bold",
         "address": "Montserrat",
         "social": "Lucida Grande",
+    },
+    "fontsize":{
+        "list": 28
     }
 };
 
@@ -71,6 +74,9 @@ const resetOBJ = {
         "list": "Montserrat Bold",
         "address": "Montserrat",
         "social": "Lucida Grande",
+    },
+    "fontsize":{
+        "list": 25
     }
 };
 

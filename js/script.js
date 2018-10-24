@@ -47,12 +47,91 @@ function draw(component, drawing) {
                 "list": "Montserrat Bold",
                 "address": "Montserrat",
                 "social": "Lucida Grande",
+            },
+            "fontsize": {
+                "list": 21.5
             }
-        };
+        }
+        ;
 
-    let lineHeght = 31;
+    let HEADER = drawing.colors.header;
+    let HEADER_TEXT1 = drawing.colors.headertext1;
+    let HEADER_TEXT2 = drawing.colors.headertext2;
+    let BODY = drawing.colors.body;
+    let FONT_TITLE = drawing.fonts.title;
+    let FONT_WEEK = drawing.fonts.week;
+    let FONT_LIST = drawing.fonts.list;
+    let FONT_ADDRESS = drawing.fonts.address;
+    let FONT_SOCIAL = drawing.fonts.social;
+    let DAY = drawing.day;
+    let DAY_BODY = drawing.colors.daybody;
+    let DAY_HEADER = drawing.colors.dayheader;
+    let DAY_TEXT = drawing.colors.daytext;
+    let ADDRESS = drawing.colors.address;
+    let SOCIAL = drawing.colors.social;
+    let LIST_TEXT_COLOR = drawing.colors.listtext;
+    let SOCIAL_FILL = drawing.colors.socialfill;
+    let LIST = drawing.items;
+    let LIST_FONT_SIZE = drawing.fontsize.list
 
-    canvas.height = ((drawing.items.length - 1) * lineHeght) + 435;
+    if (!HEADER)
+        HEADER = "#E6050C";
+    if (!HEADER_TEXT1)
+        HEADER_TEXT1 = "#70CB01";
+    if (!HEADER_TEXT2)
+        HEADER_TEXT2 = "#FFF";
+    if (!BODY)
+        BODY = "#FFF200";
+    if (!FONT_TITLE)
+        FONT_TITLE = 'Montserrat Black';
+    if (!FONT_WEEK)
+        FONT_WEEK = 'Liebe Doris';
+    if (!FONT_LIST)
+        FONT_LIST = 'Montserrat Bold';
+    if (!FONT_ADDRESS)
+        FONT_ADDRESS = 'Montserrat';
+    if (!FONT_SOCIAL)
+        FONT_SOCIAL = 'Lucida Grande';
+    if (!DAY)
+        DAY = "SEGUNDA";
+    if (!DAY_BODY)
+        DAY_BODY = "#E7E7E7";
+    if (!DAY_HEADER)
+        DAY_HEADER = "#99FF1C";
+    if (!DAY_TEXT)
+        DAY_TEXT = "#000";
+    if (!ADDRESS)
+        ADDRESS = "#000";
+    if (!SOCIAL)
+        SOCIAL = "#FFF";
+    if (!LIST)
+        LIST = [];
+    if (!LIST_TEXT_COLOR)
+        LIST_TEXT_COLOR = '#000';
+    if (!SOCIAL_FILL)
+        SOCIAL_FILL = '#E6050C';
+    if (!LIST_FONT_SIZE)
+        LIST_FONT_SIZE = 21.5;
+
+    let textMarginLine = 7;
+
+    let lineHeight = LIST_FONT_SIZE + 9.5;
+
+    let aux = 0;
+
+    for (let i = 0; i < LIST.length; i++) {
+        let sp = LIST[i].split("#n");
+        for (let j = 0; j < sp.length; j++) {
+            if (sp.length > 1 && j) {
+                aux += lineHeight - 9.5;
+                if (j === sp.length - 1) {
+                    aux += textMarginLine;
+                }
+            }
+        }
+    }
+
+    canvas.height = aux + (((drawing.items.length - 1) * lineHeight) + 435);
 
     if (canvas.height < 788) {
         canvas.height = 788;
@@ -61,69 +140,13 @@ function draw(component, drawing) {
     if (canvas.getContext) {
         let ctx = canvas.getContext("2d");
 
-        ctx.fillRect(0, 0, 1000, 1000);
-
-        let HEADER = drawing.colors.header;
-        let HEADER_TEXT1 = drawing.colors.headertext1;
-        let HEADER_TEXT2 = drawing.colors.headertext2;
-        let BODY = drawing.colors.body;
-        let FONT_TITLE = drawing.fonts.title;
-        let FONT_WEEK = drawing.fonts.week;
-        let FONT_LIST = drawing.fonts.list;
-        let FONT_ADDRESS = drawing.fonts.address;
-        let FONT_SOCIAL = drawing.fonts.social;
-        let DAY = drawing.day;
-        let DAY_BODY = drawing.colors.daybody;
-        let DAY_HEADER = drawing.colors.dayheader;
-        let DAY_TEXT = drawing.colors.daytext;
-        let ADDRESS = drawing.colors.address;
-        let SOCIAL = drawing.colors.social;
-        let LIST_TEXT_COLOR = drawing.colors.listtext;
-        let SOCIAL_FILL = drawing.colors.socialfill;
-        let LIST = drawing.items;
-
-        if (!HEADER)
-            HEADER = "#E6050C";
-        if (!HEADER_TEXT1)
-            HEADER_TEXT1 = "#70CB01";
-        if (!HEADER_TEXT2)
-            HEADER_TEXT2 = "#FFF";
-        if (!BODY)
-            BODY = "#FFF200";
-        if (!FONT_TITLE)
-            FONT_TITLE = 'Montserrat Black';
-        if (!FONT_WEEK)
-            FONT_WEEK = 'Liebe Doris';
-        if (!FONT_LIST)
-            FONT_LIST = 'Montserrat Bold';
-        if (!FONT_ADDRESS)
-            FONT_ADDRESS = 'Montserrat';
-        if (!FONT_SOCIAL)
-            FONT_SOCIAL = 'Lucida Grande';
-        if (!DAY)
-            DAY = "SEGUNDA";
-        if (!DAY_BODY)
-            DAY_BODY = "#E7E7E7";
-        if (!DAY_HEADER)
-            DAY_HEADER = "#99FF1C";
-        if (!DAY_TEXT)
-            DAY_TEXT = "#000";
-        if (!ADDRESS)
-            ADDRESS = "#000";
-        if (!SOCIAL)
-            SOCIAL = "#FFF";
-        if (!LIST)
-            LIST = [];
-        if (!LIST_TEXT_COLOR)
-            LIST_TEXT_COLOR = '#000';
-        if (!SOCIAL_FILL)
-            SOCIAL_FILL = '#E6050C';
+        ctx.fillRect(0, 0, canvas.clientWidth, canvas.height);
 
         ctx.fillStyle = HEADER;
         ctx.fillRect(0, 0, 940, 282);
         ctx.fillStyle = BODY;
 
-        let tam = (LIST.length * 31) + 125;
+        let tam = aux + ((LIST.length * lineHeight) + 125);
 
         if (tam < 506) {
             tam = 506;
@@ -221,17 +244,14 @@ function draw(component, drawing) {
 
 
             document.fonts.load('10pt "' + FONT_LIST + '"').then(function () {
-                var lineHeight = 31;
-                var textMarginLine = 7;
                 var textCenter = 470;
-                var fontSize = 21.5;
 
                 ctx.beginPath();
-                ctx.font = 'bold ' + fontSize + 'px ' + FONT_LIST;
+                ctx.font = 'bold ' + LIST_FONT_SIZE + 'px ' + FONT_LIST;
                 ctx.textAlign = "center";
 
                 if (LIST.length <= 12) {
-                    LIST_TOP = 531 - (LIST.length * (lineHeight / 2));
+                    LIST_TOP = LIST.length * (lineHeight / 2) + 335 - (LIST.length * (lineHeight / 2));
                 } else {
                     LIST_TOP = 332;
                 }
@@ -243,8 +263,15 @@ function draw(component, drawing) {
                         ctx.fillRect(110, LIST_TOP - lineHeight, 720, 1);
                     }
 
-                    ctx.fillStyle = LIST_TEXT_COLOR;
-                    ctx.fillText(LIST[i], textCenter, LIST_TOP - textMarginLine, 720);
+                    var splitted = LIST[i].split("#n");
+
+                    for (let j = 0; j < splitted.length; j++) {
+                        ctx.fillStyle = LIST_TEXT_COLOR;
+                        ctx.fillText(splitted[j], textCenter, LIST_TOP - textMarginLine, 720);
+                        if (splitted.length > 1) {
+                            LIST_TOP = LIST_TOP + (lineHeight - 9.5);
+                        }
+                    }
 
                     if (i < LIST.length - 1) {
                         ctx.fillStyle = HEADER;

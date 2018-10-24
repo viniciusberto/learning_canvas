@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
-      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"-->
+      <!--integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
 <link rel="stylesheet" href="css/style.css">
 <body>
 <style>
@@ -87,19 +87,19 @@
         <div class="group-header">
             <label for="lista">Cores</label>
             <style>
-                #aleatorizar::after {
+                #config #aleatorizar::after {
                     right: 62px;
                 }
 
-                #aleatorizar {
+                #config #aleatorizar {
                     cursor: pointer;
                 }
 
-                #salvarTema::after {
+                #config #salvarTema::after {
                     right: 72px;
                 }
 
-                #salvarTema {
+                #config #salvarTema {
                     cursor: pointer;
                 }
             </style>
@@ -162,27 +162,27 @@
                 <label for="lista">Temas</label>
 
                 <style>
-                    #confirmarTema::after {
+                    #config #confirmarTema::after {
                         right: 77px;
                     }
 
-                    #confirmarTema {
+                    #config #confirmarTema {
                         cursor: pointer;
                     }
 
-                    #aleatorizarTema::after {
+                    #config #aleatorizarTema::after {
                         right: 62px
                     }
 
-                    #aleatorizarTema {
+                    #config #aleatorizarTema {
                         cursor: pointer;
                     }
 
-                    #galeria::after {
-                        right: 62px
+                    #config #galeria::after {
+                        right: 106px
                     }
 
-                    #galeria {
+                    #config #galeria {
                         cursor: pointer;
                     }
                 </style>
@@ -201,24 +201,12 @@
 
                 <canvas id="tema" height="788" width="940"></canvas>
                 <style>
-                    #tema {
+                    #config #tema {
                         background: #3a3a3a;
                         height: 193px;
                         width: 198px;
                         margin-top: 3px;
                     }
-
-                    /*#confirmar {*/
-                    /*position: relative;*/
-                    /*top: -22px;*/
-                    /*left: 209px;*/
-                    /*font-size: 35px;*/
-                    /*color: #099609;*/
-                    /*background: white;*/
-                    /*border: 1px solid black;*/
-                    /*border-radius: 50%;*/
-                    /*cursor: pointer;*/
-                    /*}*/
                 </style>
 
                 <a class="seta seta-direita" id="temaProximo" onclick="proximoTema()"><i class="fa fa-arrow-right"></i></a>
